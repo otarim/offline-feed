@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "archiver": "^1.1.0",
+    "cheerio": "^0.22.0",
+    "nodemailer": "^2.6.4",
+    "nodemailer-smtp-transport": "^2.7.2",
+    "request": "^2.75.0",
+    "true-html-escape": "^1.0.0",
+    "xml2json": "^0.10.0"
+  }
+}
