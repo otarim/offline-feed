@@ -358,9 +358,9 @@ var doWeixin = function() {
 }
 
 // 归档
-var archive = function(attachments) {
+var toArchive = function(attachments) {
     var outputPath = path.resolve(__dirname, './out/kindle_' + Date.now() + '.zip'),
-        outputStream = fs.createWriteStream(outputPath)
+        outputStream = fs.createWriteStream(outputPath),
         archive = archiver('zip')
 
     archive.pipe(outputStream)
@@ -447,7 +447,7 @@ process.on('uncaughtException', function(err) {
 //         return Promise.resolve()
 //     }
 // }).then(function() {
-//     archive(walk(DIST_PATH, '.html')).then(function(dist) {
+//     toArchive(walk(DIST_PATH, '.html')).then(function(dist) {
 //         send(dist).then(function(re) {
 //             console.log('发送成功')
 //             clean()
@@ -467,7 +467,7 @@ doWeixin().then(function(re) {
     return Promise.resolve(false)
 }).then(function(signal) {
     if (signal !== false) {
-        archive(walk(DIST_PATH, '.mobi')).then(function(dist) {
+        toArchive(walk(DIST_PATH, '.mobi')).then(function(dist) {
             send(dist).then(function(re) {
                 console.log('发送成功')
                 clean()
